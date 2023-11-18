@@ -1,24 +1,67 @@
 {
-  "examples": [
+  "films": [
     {
       "id": 1,
-      "name": "Bartman",
-      "state": "Vivo"
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
     },
     {
       "id": 2,
-      "name": "EYOOOOu",
-      "state": "Vivo"
+      "name": "Godzilla Raids Again",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
     },
     {
-      "id": 3,
-      "name": "klkcompare",
-      "state": "Vivo"
+      "id": 1,
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
     },
     {
-      "user": "Pepito",
-      "state": "hola",
-      "id": 4
+      "id": 1,
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
+    }
+     {
+      "id": 1,
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
+    },
+     {
+      "id": 1,
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
+    },
+     {
+      "id": 1,
+      "name": "Godzilla",
+      "japaneseName": "(ゴジラ)",
+      "era": "Showa",
+      "year": "1954",
+      "img": "https://wikizilla.org/w/images/9/95/Gojira_1954_Japanese_poster.jpg",
+      "director": "Ishiro Honda"
     }
   ]
 }

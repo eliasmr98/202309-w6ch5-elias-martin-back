@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { Example } from './model/example';
+import { Example } from './model/example.js';
 import { ObjectEncodingOptions } from 'fs';
 
 const fileName = './api/db.json';
