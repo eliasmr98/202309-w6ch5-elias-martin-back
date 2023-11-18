@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { examplesRouter } from './router/examples.router.js';
+import { filmsRouter } from './router/films.routes.js';
 
 export const app = express();
 
@@ -11,4 +11,4 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/examples', examplesRouter);
+app.use('/films', filmsRouter);
