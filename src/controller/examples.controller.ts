@@ -1,17 +1,5 @@
 import { Request, Response } from 'express';
-// Import { ObjectEncodingOptions } from 'fs';
-import fs from 'fs';
-import { Example } from '../model/example';
-
-const dataFilePath = './api/db.json';
-export let dataArray: Example[] = [];
-
-try {
-  const rawData = fs.readFileSync(dataFilePath, 'utf-8');
-  dataArray = JSON.parse(rawData).things || [];
-} catch (error) {
-  console.error('Error al leer el archivo db.json:', error);
-}
+import { dataArray } from '../files.js';
 
 export const getAll = (_req: Request, res: Response) => {
   res.json(dataArray);
