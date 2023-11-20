@@ -37,7 +37,8 @@ export class FilmsFileRepo implements Repository<Film> {
   }
 
   async create(newItem: Omit<Film, 'id'>): Promise<Film> {
-    const result: Film = { ...newItem, id: crypto.randomUUID() };
+    const id = (this.films.length + 1).toString();
+    const result: Film = { ...newItem, id };
     const newTasks = [...this.films, result];
     await this.save(newTasks as Film[]);
     return result;
