@@ -6,11 +6,11 @@ Crea una API REST que se conecte a un fichero JSON, para manipular recursos de t
 
 La API REST debe tener los siguientes endpoints:
 
-[GET] /things -> devuelve el array de cosas que ya sé
+[GET] /things -> devuelve el array de cosas que ya sé.
 
-[GET] /things/:idThing -> devuelve una cosa que ya sé
+[GET] /things/:idThing -> devuelve una cosa que ya sé.
 
-[DELETE] /things/:idThing -> borra una cosa que ya sé
+[DELETE] /things/:idThing -> borra una cosa que ya sé.
 
 [POST] /things -> crea una cosa que ya sé (la recibe en el body)
 
