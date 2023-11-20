@@ -19,7 +19,7 @@ export const readDataFile = async () => {
 
 const writeDataFile = async (films: Film[]) => {
   try {
-    const data = { films }; // Crear un objeto con la propiedad "films"
+    const data = { films };
     await fs.writeFile(fileName, JSON.stringify(data), 'utf8');
   } catch (error) {
     console.log((error as Error).message);
