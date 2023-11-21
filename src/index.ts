@@ -1,6 +1,7 @@
 import { createServer } from 'http';
 import { app } from './app.js';
 import createDebug from 'debug';
+import { dbConnect } from './services/db.connect.js';
 
 const debug = createDebug('W7E:index');
 const PORT = process.env.PORT ?? 3100;
@@ -8,7 +9,12 @@ const server = createServer(app);
 
 debug('Starting server');
 
-server.listen(PORT);
+dbConnect()
+  .then((mongoose) => {
+    server.listen(PORT);
+    debug('Connected to DB:', mongoose.connection.db.databaseName);
+  })
+  .catch((error) => server.emit(error));
 
 server.on('listening', () => {
   debug('Listening on port', PORT);

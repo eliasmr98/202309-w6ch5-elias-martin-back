@@ -1,19 +1,23 @@
 import { NextFunction, Request, Response } from 'express';
-import { FilmsFileRepo } from '../repos/films.file.repo.js';
 import createDebug from 'debug';
+import { Repository } from '../repos/repo.js';
+import { Film } from '../entities/film.js';
 
 const debug = createDebug('W7E:films:controller');
 
 export class FilmsController {
-  repo: FilmsFileRepo;
-  constructor() {
+  // eslint-disable-next-line no-unused-vars
+  constructor(private repo: Repository<Film>) {
     debug('Instantiated');
-    this.repo = new FilmsFileRepo();
   }
 
-  async getAll(_req: Request, res: Response) {
-    const result = await this.repo.getAll();
-    res.json(result);
+  async getAll(_req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.getAll();
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async getById(req: Request, res: Response, next: NextFunction) {
@@ -27,16 +31,24 @@ export class FilmsController {
 
   search = async (_req: Request, _res: Response) => {};
 
-  async create(req: Request, res: Response) {
-    const result = await this.repo.create(req.body);
-    res.status(201);
-    res.statusMessage = 'Created';
-    res.json(result);
+  async create(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.create(req.body);
+      res.status(201);
+      res.statusMessage = 'Created';
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async update(req: Request, res: Response) {
-    const result = await this.repo.update(req.params.id, req.body);
-    res.json(result);
+  async update(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.update(req.params.id, req.body);
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async delete(req: Request, res: Response, next: NextFunction) {
