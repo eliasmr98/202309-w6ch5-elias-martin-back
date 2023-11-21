@@ -29,8 +29,6 @@ export class FilmsController {
     }
   }
 
-  search = async (_req: Request, _res: Response) => {};
-
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const result = await this.repo.create(req.body);
