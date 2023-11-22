@@ -1,6 +1,6 @@
-import { Film } from '../entities/film.js';
+import { Film } from '../../entities/film.js';
 import { FilmsMongoRepo } from './films.mongo.repo.js';
-import { HttpError } from '../types/http.error.js';
+import { HttpError } from '../../types/http.error.js';
 import { FilmModel } from './films.mongo.model.js';
 
 jest.mock('./films.mongo.model.js');

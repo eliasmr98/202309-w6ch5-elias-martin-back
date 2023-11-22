@@ -1,7 +1,7 @@
 import { Router as createRouter } from 'express';
 import { FilmsController } from '../controllers/films.controller.js';
 import createDebug from 'debug';
-import { FilmsMongoRepo } from '../repos/films.mongo.repo.js';
+import { FilmsMongoRepo } from '../repos/films/films.mongo.repo.js';
 
 const debug = createDebug('W7E:films:router');
 

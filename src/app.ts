@@ -5,6 +5,7 @@ import { filmsRouter } from './routers/films.routes.js';
 import createDebug from 'debug';
 
 import { errorMiddleware } from './middleware/error.middleware.js';
+import { usersRouter } from './routers/users.routes.js';
 
 const debug = createDebug('W7E:app');
 
@@ -18,5 +19,6 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/films', filmsRouter);
+app.use('/users', usersRouter);
 
 app.use(errorMiddleware);

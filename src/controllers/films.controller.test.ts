@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { FilmsController } from './films.controller';
-import { FilmsMongoRepo } from '../repos/films.mongo.repo';
+import { FilmsMongoRepo } from '../repos/films/films.mongo.repo';
 
 describe('Given FilmsController class', () => {
   let controller: FilmsController;
