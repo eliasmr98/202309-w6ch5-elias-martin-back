@@ -18,6 +18,7 @@ const filmsSchema = new Schema<Film>({
   },
   img: {
     type: String,
+    unique: true,
   },
   director: {
     type: String,

@@ -22,11 +22,6 @@ export class FilmsMongoRepo implements Repository<Film> {
     return result;
   }
 
-  search({ _key, _value }: { _key: string; _value: unknown }): Promise<Film[]> {
-    // Temp this.films.find((item) => item[_key] === _value)
-    throw new Error('Method not implemented.');
-  }
-
   async create(newItem: Omit<Film, 'id'>): Promise<Film> {
     const result: Film = await FilmModel.create(newItem);
     return result;
