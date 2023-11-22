@@ -35,6 +35,13 @@ describe('Given FilmsMongoRepo class', () => {
       expect(result).toEqual(mockData[0]);
     });
 
+    test('Then getById should throw HttpError for non-existent id', async () => {
+      const repo = new FilmsMongoRepo();
+      const nonExistentId = 'non-existent-id';
+      (FilmModel.findById as jest.Mock).mockResolvedValue(null);
+      await expect(repo.getById(nonExistentId)).rejects.toThrow(HttpError);
+    });
+
     test('Then create should add a new film and return it', async () => {
       const repo = new FilmsMongoRepo();
       const newFilm = { name: mockName } as Omit<Film, 'id'>;
@@ -50,6 +57,13 @@ describe('Given FilmsMongoRepo class', () => {
         id: mockId,
         name: mockName,
       });
+    });
+
+    test('Then update should throw HttpError for non-existent id', async () => {
+      const repo = new FilmsMongoRepo();
+      const nonExistentId = 'non-existent-id';
+      (FilmModel.findByIdAndUpdate as jest.Mock).mockResolvedValue(null);
+      await expect(repo.update(nonExistentId, {})).rejects.toThrow(HttpError);
     });
 
     test('Then delete should remove an existing film', async () => {
