@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import createDebug from 'debug';
 import { Repository } from '../repo';
 import { LoginUser, User } from '../../entities/user.js';
@@ -45,6 +46,16 @@ export class UsersMongoRepo implements Repository<User> {
   }
 
   delete(_id: string): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  search({
+    key,
+    value,
+  }: {
+    key: 'id' | 'name' | keyof LoginUser | 'surname' | 'age' | 'films';
+    value: unknown;
+  }): Promise<User[]> {
     throw new Error('Method not implemented.');
   }
 }

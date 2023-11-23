@@ -29,8 +29,21 @@ export class FilmsController {
     }
   }
 
+  async search(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.search({
+        key: Object.entries(req.query)[0][0] as keyof Film,
+        value: Object.entries(req.query)[0][1],
+      });
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async create(req: Request, res: Response, next: NextFunction) {
     try {
+      req.body.author = { id: req.body.userId };
       const result = await this.repo.create(req.body);
       res.status(201);
       res.statusMessage = 'Created';
