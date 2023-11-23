@@ -1,3 +1,5 @@
+import { User } from './user.js';
+
 export type Film = {
   id: string;
   name: string;
@@ -6,4 +8,5 @@ export type Film = {
   year: string;
   img: string;
   director: string;
+  author: User;
 };
