@@ -82,8 +82,10 @@ export class FilmsMongoRepo implements Repository<Film> {
 
     const userID = result.author.id;
     const user = await this.usersRepo.getById(userID);
-    const film = new mongoose.mongo.ObjectId(id) as unknown as Film;
-    user.films = user.films.filter((item) => item !== film);
+    user.films = user.films.filter((item) => {
+      const itemID = item as unknown as mongoose.mongo.ObjectId;
+      return itemID.toString() !== id;
+    });
     await this.usersRepo.update(userID, user);
   }
 }

@@ -8,7 +8,7 @@ import { HttpError } from '../types/http.error.js';
 const debug = createDebug('W7E:auth');
 debug('Imported');
 
-type TokenPayload = {
+export type TokenPayload = {
   id: User['id'];
   email: string;
 } & jwt.JwtPayload;
@@ -25,6 +25,7 @@ export abstract class Auth {
 
   static signJWT(payload: TokenPayload) {
     return jwt.sign(payload, Auth.secret!);
+    // Temp return jwt.sign(payload, Auth.secret!, { expiresIn: '1h' })
   }
 
   static verifyAndGetPayload(token: string) {
