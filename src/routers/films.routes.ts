@@ -15,7 +15,7 @@ const interceptor = new AuthInterceptor();
 
 filmsRouter.get(
   '/',
-  interceptor.authorization.bind(interceptor),
+  // Temp interceptor.authorization.bind(interceptor),
   controller.getAll.bind(controller)
 );
 filmsRouter.get('/search', controller.search.bind(controller));
