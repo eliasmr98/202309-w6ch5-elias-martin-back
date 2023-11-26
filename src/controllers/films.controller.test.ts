@@ -86,32 +86,32 @@ describe('Given FilmsController class', () => {
 
       controller = new FilmsController(mockRepo);
     });
-    test('Then getAll should...', async () => {
+    test('Then getAll should throw an error', async () => {
       await controller.getAll(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then getById should...', async () => {
+    test('Then getById should throw an error', async () => {
       await controller.getById(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then search should...', async () => {
+    test('Then search should throw an error', async () => {
       await controller.search(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then create should...', async () => {
+    test('Then create should throw an error', async () => {
       await controller.create(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then update should...', async () => {
+    test('Then update should throw an error', async () => {
       await controller.update(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then delete should...', async () => {
+    test('Then delete should thrown an error', async () => {
       await controller.delete(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
