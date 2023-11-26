@@ -43,4 +43,4 @@ filmsSchema.set('toJSON', {
   },
 });
 
-export const FilmModel = model('Film', filmsSchema, 'films');
+export const FilmModel = model<Film>('Film', filmsSchema, 'films');
