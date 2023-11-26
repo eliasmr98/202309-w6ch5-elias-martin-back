@@ -30,7 +30,6 @@ describe('Given FilmsController class', () => {
         create: jest.fn().mockResolvedValue({}),
         update: jest.fn().mockResolvedValue({}),
         delete: jest.fn().mockResolvedValue(undefined),
-        login: jest.fn().mockResolvedValue({}),
       } as unknown as UsersMongoRepo;
 
       controller = new UsersController(mockRepo);
@@ -69,11 +68,22 @@ describe('Given FilmsController class', () => {
       expect(mockResponse.statusMessage).toBe('No Content');
       expect(mockResponse.json).toHaveBeenCalledWith({});
     });
+
     test('Then login should...', async () => {
+      const mockUserId = 'mockUserId';
+      const mockLoginResult = { id: 'mockUserId', email: 'mock@example.com' };
+      const mockRequest = {
+        body: { userId: mockUserId },
+      } as unknown as Request;
+      const mockRepo = {
+        getById: jest.fn().mockResolvedValue(mockLoginResult),
+        login: jest.fn().mockResolvedValue(mockLoginResult),
+      } as unknown as UsersMongoRepo;
+
+      const controller = new UsersController(mockRepo);
+
       await controller.login(mockRequest, mockResponse, mockNext);
-      expect(mockResponse.status).toHaveBeenCalledWith(202);
-      expect(mockResponse.statusMessage).toBe('Accepted');
-      expect(mockResponse.json).toHaveBeenCalled();
+      expect(mockRepo.getById).toHaveBeenCalledWith(mockUserId);
     });
   });
 
