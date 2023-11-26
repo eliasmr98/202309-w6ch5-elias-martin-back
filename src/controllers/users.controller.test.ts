@@ -50,7 +50,7 @@ describe('Given FilmsController class', () => {
 
       controller = new UsersController(mockRepo);
     });
-    test('Then login should...', async () => {
+    test('Then login should throw an error', async () => {
       await controller.login(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
