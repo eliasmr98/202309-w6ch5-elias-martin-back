@@ -1,3 +1,4 @@
+import { ImgData } from '../types/img.data.js';
 import { User } from './user.js';
 
 export type Film = {
@@ -6,7 +7,8 @@ export type Film = {
   producer: string;
   era: string;
   year: string;
-  img: string;
+  filmFrontImg: ImgData;
+  filmBackImg: ImgData;
   director: string;
   author: User;
 };

@@ -3,6 +3,7 @@ import { FilmsController } from '../controllers/films.controller.js';
 import createDebug from 'debug';
 import { FilmsMongoRepo } from '../repos/films/films.mongo.repo.js';
 import { AuthInterceptor } from '../middleware/auth.interceptor.js';
+import { FileInterceptor } from '../middleware/file.interceptor.js';
 
 const debug = createDebug('W7E:films:router');
 
@@ -12,6 +13,7 @@ debug('Starting');
 const repo = new FilmsMongoRepo();
 const controller = new FilmsController(repo);
 const interceptor = new AuthInterceptor();
+const fileInterceptor = new FileInterceptor();
 
 filmsRouter.get(
   '/',
@@ -23,6 +25,7 @@ filmsRouter.get('/:id', controller.getById.bind(controller));
 filmsRouter.post(
   '/',
   interceptor.authorization.bind(interceptor),
+  fileInterceptor.singleFileStore('filmFrontImg').bind(fileInterceptor),
   controller.create.bind(controller)
 );
 filmsRouter.patch(

@@ -19,10 +19,17 @@ const filmsSchema = new Schema<Film>({
     type: String,
     required: true,
   },
-  img: {
-    type: String,
-    required: true,
-    unique: true,
+  filmFrontImg: {
+    publicId: String,
+    size: Number,
+    format: String,
+    url: String,
+  },
+  filmBackImg: {
+    publicId: String,
+    size: Number,
+    format: String,
+    url: String,
   },
   director: {
     type: String,
