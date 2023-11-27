@@ -5,7 +5,6 @@ const filmsSchema = new Schema<Film>({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   producer: {
     type: String,
