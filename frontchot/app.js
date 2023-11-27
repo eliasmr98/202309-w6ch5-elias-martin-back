@@ -1,6 +1,6 @@
 const serverUrl = 'http://localhost:3500';
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
   const form = event.target;
 
@@ -9,13 +9,18 @@ const handleSubmit = (event) => {
     passwd: form.elements.namedItem('passwd').value,
   };
 
-  console.log(userLogin);
-
   const url = serverUrl + '/users/login';
 
-  fetch(url, {
+  const response = await fetch(url, {
     method: 'POST',
+    body: JSON.stringify(userLogin),
+    headers: {
+      'Content-type': 'application/json',
+    },
   });
+
+  const result = await response.json();
+  console.log(result);
 };
 
 document.querySelector('form').addEventListener('submit', handleSubmit);

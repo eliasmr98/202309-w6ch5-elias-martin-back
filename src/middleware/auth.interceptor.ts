@@ -18,7 +18,7 @@ export class AuthInterceptor {
         throw new HttpError(401, 'Unauthorized');
       const token = tokenHeader.split(' ')[1];
       const tokenPayload = Auth.verifyAndGetPayload(token);
-      req.body.userId = tokenPayload.id;
+      req.body.tokenUserId = tokenPayload.id;
       next();
     } catch (error) {
       next(error);
@@ -28,7 +28,7 @@ export class AuthInterceptor {
   async authenticationFilms(req: Request, res: Response, next: NextFunction) {
     try {
       // Eres el usuario
-      const userID = req.body.userId;
+      const userID = req.body.tokenUserId;
       // Quieres actuar sobre la película
       const filmsID = req.params.id;
       const repoFilms = new FilmsMongoRepo();
