@@ -4,19 +4,15 @@ import { Film } from '../../entities/film.js';
 const filmsSchema = new Schema<Film>({
   name: {
     type: String,
-    required: true,
   },
   producer: {
     type: String,
-    required: true,
   },
   era: {
     type: String,
-    required: true,
   },
   year: {
     type: String,
-    required: true,
   },
   filmFrontImg: {
     publicId: String,
@@ -32,7 +28,6 @@ const filmsSchema = new Schema<Film>({
   },
   director: {
     type: String,
-    required: true,
   },
   author: {
     type: Schema.Types.ObjectId,

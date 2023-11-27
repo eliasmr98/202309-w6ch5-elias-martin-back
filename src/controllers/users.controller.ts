@@ -15,8 +15,8 @@ export class UsersController extends Controller<User> {
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      const result = req.body.tokenUserId
-        ? await this.repo.getById(req.body.tokenUserId)
+      const result = req.body.userId // Explicación: userId equivaldría a tokenUserId (para poder entender mejor de dónde viene)
+        ? await this.repo.getById(req.body.userId) // Explicación: userId equivaldría a tokenUserId (para poder entender mejor de dónde viene)
         : await this.repo.login(req.body);
 
       const data = {

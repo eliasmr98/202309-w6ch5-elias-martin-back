@@ -41,7 +41,7 @@ export abstract class Controller<T extends { id: unknown }> {
       req.body.filmFrontImg = {
         publicId: req.file?.filename,
         format: req.file?.mimetype,
-        url: req.file?.path,
+        url: req.path,
         size: req.file?.size,
       };
       const result = await this.repo.create(req.body);

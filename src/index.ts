@@ -21,5 +21,5 @@ server.on('listening', () => {
 });
 
 server.on('error', (error) => {
-  console.log(error.message);
+  debug(`Error ${error.message}`);
 });
