@@ -12,11 +12,11 @@ describe('Given FilmsController class', () => {
     mockRequest = {
       body: {},
       params: {},
-    } as Request;
+      query: { key: 'value' },
+    } as unknown as Request;
     mockResponse = {
       json: jest.fn(),
-      status: jest.fn().mockReturnThis(),
-      statusMessage: '',
+      status: jest.fn(),
     } as unknown as Response;
     mockNext = jest.fn();
   });
@@ -26,6 +26,7 @@ describe('Given FilmsController class', () => {
       const mockRepo = {
         getAll: jest.fn().mockResolvedValue([{}]),
         getById: jest.fn().mockResolvedValue({}),
+        search: jest.fn().mockResolvedValue([{}]),
         create: jest.fn().mockResolvedValue({}),
         update: jest.fn().mockResolvedValue({}),
         delete: jest.fn().mockResolvedValue(undefined),
@@ -42,6 +43,11 @@ describe('Given FilmsController class', () => {
     test('Then getById should...', async () => {
       await controller.getById(mockRequest, mockResponse, mockNext);
       expect(mockResponse.json).toHaveBeenCalledWith({});
+    });
+
+    test('Then search should...', async () => {
+      await controller.search(mockRequest, mockResponse, mockNext);
+      expect(mockResponse.json).toHaveBeenCalledWith([{}]);
     });
 
     test('Then create should...', async () => {
@@ -72,6 +78,7 @@ describe('Given FilmsController class', () => {
       const mockRepo = {
         getAll: jest.fn().mockRejectedValue(mockError),
         getById: jest.fn().mockRejectedValue(mockError),
+        search: jest.fn().mockRejectedValue(mockError),
         create: jest.fn().mockRejectedValue(mockError),
         update: jest.fn().mockRejectedValue(mockError),
         delete: jest.fn().mockRejectedValue(mockError),
@@ -79,27 +86,32 @@ describe('Given FilmsController class', () => {
 
       controller = new FilmsController(mockRepo);
     });
-    test('Then getAll should...', async () => {
+    test('Then getAll should throw an error', async () => {
       await controller.getAll(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then getById should...', async () => {
+    test('Then getById should throw an error', async () => {
       await controller.getById(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then create should...', async () => {
+    test('Then search should throw an error', async () => {
+      await controller.search(mockRequest, mockResponse, mockNext);
+      expect(mockNext).toHaveBeenCalledWith(mockError);
+    });
+
+    test('Then create should throw an error', async () => {
       await controller.create(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then update should...', async () => {
+    test('Then update should throw an error', async () => {
       await controller.update(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
 
-    test('Then delete should...', async () => {
+    test('Then delete should thrown an error', async () => {
       await controller.delete(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });

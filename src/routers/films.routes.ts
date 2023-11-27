@@ -13,7 +13,11 @@ const repo = new FilmsMongoRepo();
 const controller = new FilmsController(repo);
 const interceptor = new AuthInterceptor();
 
-filmsRouter.get('/', controller.getAll.bind(controller));
+filmsRouter.get(
+  '/',
+  // Temp interceptor.authorization.bind(interceptor),
+  controller.getAll.bind(controller)
+);
 filmsRouter.get('/search', controller.search.bind(controller));
 filmsRouter.get('/:id', controller.getById.bind(controller));
 filmsRouter.post(
