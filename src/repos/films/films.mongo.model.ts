@@ -17,12 +17,16 @@ const filmsSchema = new Schema<Film>({
   filmFrontImg: {
     publicId: String,
     size: Number,
+    height: Number,
+    width: Number,
     format: String,
     url: String,
   },
   filmBackImg: {
     publicId: String,
     size: Number,
+    height: Number,
+    width: Number,
     format: String,
     url: String,
   },

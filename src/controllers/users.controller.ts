@@ -4,6 +4,7 @@ import { UsersMongoRepo } from '../repos/users/users.mongo.repo.js';
 import { Auth } from '../services/auth.js';
 import { Controller } from './controller.js';
 import { User } from '../entities/user.js';
+import { LoginResponse } from '../types/login.response.js';
 
 const debug = createDebug('W7E:users:controller');
 
@@ -19,7 +20,7 @@ export class UsersController extends Controller<User> {
         ? await this.repo.getById(req.body.userId) // Explicación: userId equivaldría a tokenUserId (para poder entender mejor de dónde viene)
         : await this.repo.login(req.body);
 
-      const data = {
+      const data: LoginResponse = {
         user: result,
         token: Auth.signJWT({
           id: result.id,

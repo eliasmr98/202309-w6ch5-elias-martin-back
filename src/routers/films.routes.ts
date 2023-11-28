@@ -17,7 +17,7 @@ const fileInterceptor = new FileInterceptor();
 
 filmsRouter.get(
   '/',
-  // Temp interceptor.authorization.bind(interceptor),
+  // Opcional interceptor.authorization.bind(interceptor),
   controller.getAll.bind(controller)
 );
 filmsRouter.get('/search', controller.search.bind(controller));

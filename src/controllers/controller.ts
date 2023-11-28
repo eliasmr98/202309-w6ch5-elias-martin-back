@@ -1,10 +1,13 @@
-/* eslint-disable no-useless-constructor */
-import { Repository } from '../repos/repo';
+import { Repository } from '../repos/repo.js';
 import { NextFunction, Request, Response } from 'express';
+import { MediaFiles } from '../services/media.file.js';
 
 export abstract class Controller<T extends { id: unknown }> {
+  cloudinaryService: MediaFiles;
   // eslint-disable-next-line no-unused-vars
-  constructor(protected repo: Repository<T>) {}
+  constructor(protected repo: Repository<T>) {
+    this.cloudinaryService = new MediaFiles();
+  }
 
   async getAll(_req: Request, res: Response, next: NextFunction) {
     try {
@@ -38,12 +41,6 @@ export abstract class Controller<T extends { id: unknown }> {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      req.body.filmFrontImg = {
-        publicId: req.file?.filename,
-        format: req.file?.mimetype,
-        url: req.path,
-        size: req.file?.size,
-      };
       const result = await this.repo.create(req.body);
       res.status(201);
       res.statusMessage = 'Created';
