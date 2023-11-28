@@ -23,13 +23,13 @@ describe('Given FilmsController class', () => {
 
   describe('When we instantiate it without errors', () => {
     test('Then login should...', async () => {
-      const mockTokenUserId = 'mockTokenUserId';
+      const mockUserId = 'mockUserId';
       const mockLoginResult = {
-        id: 'mockTokenUserId',
+        id: 'mockUserId',
         email: 'mock@example.com',
       };
       const mockRequest = {
-        body: { tokenUserId: mockTokenUserId },
+        body: { userId: mockUserId },
       } as unknown as Request;
       const mockRepo = {
         getById: jest.fn().mockResolvedValue(mockLoginResult),
@@ -39,7 +39,7 @@ describe('Given FilmsController class', () => {
       const controller = new UsersController(mockRepo);
 
       await controller.login(mockRequest, mockResponse, mockNext);
-      expect(mockRepo.getById).toHaveBeenCalledWith(mockTokenUserId);
+      expect(mockRepo.getById).toHaveBeenCalledWith(mockUserId);
     });
   });
 

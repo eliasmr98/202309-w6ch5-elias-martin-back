@@ -14,7 +14,7 @@ export class FilmsController extends Controller<Film> {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      req.body.author = { id: req.body.tokenUserId };
+      req.body.author = { id: req.body.userId };
       super.create(req, res, next);
     } catch (error) {
       next(error);
