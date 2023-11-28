@@ -15,6 +15,12 @@ export class FilmsController extends Controller<Film> {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       req.body.author = { id: req.body.userId };
+      req.body.filmFrontImg = {
+        publicId: req.file?.filename,
+        format: req.file?.mimetype,
+        url: req.path,
+        size: req.file?.size,
+      };
       super.create(req, res, next);
     } catch (error) {
       next(error);

@@ -38,12 +38,6 @@ export abstract class Controller<T extends { id: unknown }> {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      req.body.filmFrontImg = {
-        publicId: req.file?.filename,
-        format: req.file?.mimetype,
-        url: req.path,
-        size: req.file?.size,
-      };
       const result = await this.repo.create(req.body);
       res.status(201);
       res.statusMessage = 'Created';
