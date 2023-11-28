@@ -18,7 +18,7 @@ export class FilmsController extends Controller<Film> {
       req.body.filmFrontImg = {
         publicId: req.file?.filename,
         format: req.file?.mimetype,
-        url: req.path,
+        url: req.file?.path,
         size: req.file?.size,
       };
       super.create(req, res, next);
