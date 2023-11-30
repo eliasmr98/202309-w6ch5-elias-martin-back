@@ -26,6 +26,14 @@ const usersSchema = new Schema<User>({
       ref: 'Film',
     },
   ],
+  avatar: {
+    publicId: String,
+    size: Number,
+    height: Number,
+    width: Number,
+    format: String,
+    url: String,
+  },
 });
 
 usersSchema.set('toJSON', {
