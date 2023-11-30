@@ -45,10 +45,12 @@ export class UsersMongoRepo implements Repository<User> {
     return result;
   }
 
+  // NO IMPLEMENTADO AUN
   delete(_id: string): Promise<void> {
     throw new Error('Method not implemented.');
   }
 
+  // NO IMPLEMENTADO AÚN
   search({
     key,
     value,
