@@ -34,6 +34,12 @@ const usersSchema = new Schema<User>({
     format: String,
     url: String,
   },
+  role: {
+    type: String,
+    required: true,
+    enum: ['Admin', 'User'],
+    default: 'User',
+  },
 });
 
 usersSchema.set('toJSON', {

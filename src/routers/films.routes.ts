@@ -37,6 +37,8 @@ filmsRouter.patch(
 filmsRouter.delete(
   '/:id',
   interceptor.authorization.bind(interceptor),
-  interceptor.authenticationFilms.bind(interceptor),
+  // Los usuarios borran lo suyo -> interceptor.authenticationFilms.bind(interceptor),
+  // Los admin pueden borrar
+  interceptor.isAdmin.bind(interceptor),
   controller.delete.bind(controller)
 );

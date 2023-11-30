@@ -26,6 +26,7 @@ export class UsersController extends Controller<User> {
         token: Auth.signJWT({
           id: result.id,
           email: result.email,
+          role: result.role,
         }),
       };
       res.status(202);

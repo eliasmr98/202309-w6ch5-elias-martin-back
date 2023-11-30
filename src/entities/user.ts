@@ -13,4 +13,5 @@ export type User = LoginUser & {
   age: number;
   films: Film[];
   avatar: ImgData;
+  role: 'Admin' | 'User';
 };
