@@ -5,9 +5,6 @@ const filmsSchema = new Schema<Film>({
   name: {
     type: String,
   },
-  producer: {
-    type: String,
-  },
   era: {
     type: String,
   },
@@ -15,14 +12,6 @@ const filmsSchema = new Schema<Film>({
     type: String,
   },
   filmFrontImg: {
-    publicId: String,
-    size: Number,
-    height: Number,
-    width: Number,
-    format: String,
-    url: String,
-  },
-  filmBackImg: {
     publicId: String,
     size: Number,
     height: Number,

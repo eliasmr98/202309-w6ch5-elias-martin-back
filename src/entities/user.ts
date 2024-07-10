@@ -1,3 +1,4 @@
+import { ImgData } from '../types/img.data.js';
 import { Film } from './film.js';
 
 export type LoginUser = {
@@ -11,4 +12,6 @@ export type User = LoginUser & {
   surname: string;
   age: number;
   films: Film[];
+  avatar: ImgData;
+  role: 'Admin' | 'User';
 };
